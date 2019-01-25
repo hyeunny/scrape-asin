@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import request from 'superagent';
+import config from './config/config';
 import logo from './js-logo.png';
 import './App.css';
 
@@ -8,7 +10,13 @@ class App extends Component {
   }
 
   _handleAddProduct = () => {
-    alert('test!');
+    request
+      .post(`${config.apiHost}/asin`)
+      .set('Accept', 'application/json')
+      .send({ asin: 'test!' })
+      .then((res) => {
+        debugger;
+      })
   }
 
   render() {
