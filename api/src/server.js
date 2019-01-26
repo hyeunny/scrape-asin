@@ -14,6 +14,7 @@ app.get('/status', function(req, res) {
 
 app.post('/asin', handlers.addProduct);
 
+app.get('/products', handlers.getProducts);
 
 app.listen(config.port,  function(req, res) {
     console.log(`API Server started on port: ${config.port}.`);

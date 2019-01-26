@@ -24,3 +24,12 @@ export function storeProduct ({ asin, category, rank, dimensions }, callback) {
         values: [params, params],
     }, callback);
 }
+
+export function getProducts(callback) {
+    // TODO: add in limit, offset in the future
+    const sql = `SELECT * FROM products`;
+
+    pool.query({
+      sql
+    }, callback);
+}
