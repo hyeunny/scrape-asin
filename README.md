@@ -1,6 +1,6 @@
 The frontend for this project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## This is a toy app for scraping and displaying data from amazon product listings
+## This is a toy app for scraping and displaying some data from amazon product listings
 
 ## You can find a deployed version at
 http://jungle-scout-asin-scraper.s3-website-us-west-2.amazonaws.com/?fbclid=IwAR2QqLOdVRlkNWgW03Ds5zWvUBmWC3BT-b8AAxQhC7j5PIID2hCtIrF71N4
