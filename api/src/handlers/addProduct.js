@@ -44,7 +44,7 @@ function _parseResponse(res, asin, callback) {
 
     // there are multiple variations for the markup at https://www.amazon.com/dp/${asin} 
     // this function was tested for the following ASINs
-    // B002QYW8LW, B073W83VC7, B07K16BSGD, B00FEEXA68, B07K16BSGD, B01NAHV221, B01NH0XWNU
+    // B002QYW8LW, B073W83VC7, B07K16BSGD, B00FEEXA68, B07K16BSGD, B01NAHV221, B01NH0XWNU, B072ZY1H1X
 
     try {
         const category = _getCategory($html);
