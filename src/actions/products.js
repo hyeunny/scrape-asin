@@ -3,7 +3,7 @@ import config from '../config/config';
 
 export function addProduct(asin) {
     const _resetProcessing = () => {
-        this.setState({ processing: false });
+        this.setState({ processing: false, asinInputVal: '' });
     }
 
     request
