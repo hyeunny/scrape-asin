@@ -2,15 +2,22 @@ import request from 'superagent';
 import config from '../config/config';
 
 export function addProduct(asin) {
+    const _resetProcessing = () => {
+        this.setState({ processing: false });
+    }
+
     request
         .post(`${config.apiHost}/asin`)
         .set('Accept', 'application/json')
         .send({ asin })
         .then((res) => {
+            _resetProcessing();
             // refresh list with new product
             getProducts.call(this);
+            alert(`Succesfully added product: ${asin}!`);
         })
         .catch((err) => {
+            _resetProcessing();
             if (err) {
                 let code = err.response.body.code;
                 if (code === 'INVALID_ASIN') {

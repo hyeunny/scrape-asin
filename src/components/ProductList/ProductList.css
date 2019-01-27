@@ -3,6 +3,14 @@
     margin-right: auto;
 }
 
+.product-list-table thead tr {
+    height: 32px;
+}
+
 .product-list-table td {
     padding: 12px;
+}
+
+.product-list-table tbody tr:nth-child(odd) {
+    background-color: white;
 }

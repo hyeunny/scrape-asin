@@ -10,6 +10,7 @@ class App extends Component {
 
     this.state = {
       asinInputVal: '',
+      processing: false,
       products: []
     }
   }
@@ -24,6 +25,7 @@ class App extends Component {
 
   _handleAddProduct = () => {
     const { asinInputVal } = this.state;
+    this.setState({ processing: true });
     addProduct.call(this, asinInputVal);
   }
 
@@ -36,22 +38,29 @@ class App extends Component {
   }
 
   render() {
-    const { asinInputVal, products } = this.state;
+    const { asinInputVal, products, processing } = this.state;
 
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <input
-            value={asinInputVal}
-            placeholder="Enter 10 digit ASIN #"
-            onChange={this._handleInputChange}
-          />
-          <button 
-            disabled={!this._asinIsValid()} 
-            onClick={this._handleAddProduct}>
-              Add Product
-          </button>
+          {processing &&
+            <p>Processing asin..</p>
+          }
+          {!processing &&
+            <React.Fragment>
+              <input
+                value={asinInputVal}
+                placeholder="Enter 10 digit ASIN #"
+                onChange={this._handleInputChange}
+              />
+              <button 
+                disabled={!this._asinIsValid()} 
+                onClick={this._handleAddProduct}>
+                  Add Product
+              </button>
+            </React.Fragment>
+          }
         </header>
 
         <ProductList products={products} />
