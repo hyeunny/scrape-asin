@@ -1,0 +1,2 @@
+ALTER TABLE `products` 
+ADD COLUMN `lastUpdated` TIMESTAMP DEFAULT NOW() ON UPDATE NOW()  AFTER `category`;

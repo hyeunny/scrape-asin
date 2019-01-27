@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import moment from 'moment';
 import { capitalize } from '../../helpers/helpers';
 import './ProductList.css'
 
@@ -33,6 +34,9 @@ class ProductList extends PureComponent {
                                     </td>
                                     <td>
                                         {product.category}
+                                    </td>
+                                    <td>
+                                        {moment(product.lastUpdated).format('MMMM Do YYYY, h:mm:ss a')}
                                     </td>
                                 </tr>
                             )
