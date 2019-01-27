@@ -9,6 +9,8 @@ const pool  = mysql.createPool({
   database        : 'db1'
 });
 
+console.log(DB_HOST, DB_USER, DB_PASSWORD);
+
 export function storeProduct ({ asin, category, rank, dimensions }, callback) {
     const sql = 'INSERT INTO products SET ? ON DUPLICATE KEY UPDATE ?';
 
@@ -26,7 +28,7 @@ export function storeProduct ({ asin, category, rank, dimensions }, callback) {
 }
 
 export function getProducts(callback) {
-    // TODO: add in limit, offset in the future
+    // TODO: add in limit, offset
     const sql = `SELECT * FROM products`;
 
     pool.query({

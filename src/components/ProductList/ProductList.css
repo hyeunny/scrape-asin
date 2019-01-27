@@ -1,0 +1,8 @@
+.product-list-table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product-list-table td {
+    padding: 12px;
+}

@@ -2,6 +2,22 @@ import $ from 'cheerio';
 import request from 'superagent';
 import async from 'async';
 import { storeProduct } from '../db/db';
+import errors from '../../errors/errors';
+
+function _getPage(asin, callback) {
+    request.get(`https://www.amazon.com/dp/${asin}`).end((err, res) => {
+        if (err && err.status === 404) {
+            callback({
+                code: errors.INVALID_ASIN,
+                msg: `The asin: ${asin} is invalid.`
+            })
+        } else if (err) {
+            callback(err);
+        } else {
+            callback(null, res);
+        }
+    });
+}
 
 function _parseResponse(res, callback) {
     const $html = $(res.text);
@@ -18,7 +34,7 @@ export function addProduct(req, res) {
 
     async.waterfall([
         (next) => {
-            request.get(`https://www.amazon.com/dp/${asin}`).end(next);
+            _getPage(asin, next);
         },
         (res, next) => {
             _parseResponse(res, next);
@@ -29,7 +45,12 @@ export function addProduct(req, res) {
         }
     ], (err) => {
         if (err) {
-            res.sendStatus(500);
+            console.error(err);
+
+            let errorResponse = {};
+            if (err.code) errorResponse.code = err.code;
+
+            res.status(500).json(errorResponse);
         } else {
             res.sendStatus(201);
         }
