@@ -33,9 +33,9 @@ function _getRank($html) {
 
 function _getDimensions($html) {
     if ($html.find('.size-weight').length) {
-        return $html.find('.size-weight').last().text().split('Dimensions')[1];    
+        return $html.find('.size-weight').last().text().split('Dimensions')[1].trim();
     } else if ($html.find('.prodDetTable').length) {
-        return $html.find('.prodDetTable').text().match(/Dimensions.*\s*.*inches/gi)[0].trim().replace(/Dimensions/gi, '');
+        return $html.find('.prodDetTable').text().match(/Dimensions.*\s*.*inches/gi)[0].replace(/Dimensions/gi, '').trim();
     }
 }
 
@@ -48,11 +48,8 @@ function _parseResponse(res, asin, callback) {
 
     try {
         const category = _getCategory($html);
-        console.log('category: ', category);
         const dimensions = _getDimensions($html);
-        console.log('dimensions: ', dimensions);
         const rank = _getRank($html);
-        console.log('rank: ', rank);
 
         callback(null, { asin, category, dimensions, rank });
     } catch(err) {

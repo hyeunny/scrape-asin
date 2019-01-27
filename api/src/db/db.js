@@ -9,8 +9,6 @@ const pool  = mysql.createPool({
   database        : 'db1'
 });
 
-console.log(process.env.DB_HOST, process.env.DB_USER, process.env.DB_PASSWORD);
-
 export function storeProduct ({ asin, category, rank, dimensions }, callback) {
     const sql = 'INSERT INTO products SET ? ON DUPLICATE KEY UPDATE ?';
 
