@@ -21,7 +21,7 @@ export function storeProduct ({ asin, category, rank, dimensions }, callback) {
 
     pool.query({
         sql,
-        values: [params, params],
+        values: [params, { ...params, lastUpdated: new Date().toISOString() }],
     }, callback);
 }
 
