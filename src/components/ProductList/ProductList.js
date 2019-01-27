@@ -29,7 +29,7 @@ class ProductList extends PureComponent {
                                         {product.rank}
                                     </td>
                                     <td>
-                                        {product.dimensions}
+                                        {product.dimensions || 'N/A'}
                                     </td>
                                     <td>
                                         {product.category}

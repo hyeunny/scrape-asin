@@ -11,8 +11,13 @@ export function addProduct(asin) {
             getProducts.call(this);
         })
         .catch((err) => {
-            if (err && err.response.body.code === 'INVALID_ASIN') {
-                alert(`The asin entered: "${asin}" is invalid.`);
+            if (err) {
+                let code = err.response.body.code;
+                if (code === 'INVALID_ASIN') {
+                    alert(`The asin entered: "${asin}" is invalid.`);
+                } else if (code === 'PAGE_PARSE_ERROR') {
+                    alert(`There was an error processing asin: "${asin}".`);
+                }
             }
         })
 }
