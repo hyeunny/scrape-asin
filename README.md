@@ -1,68 +1,24 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The frontend for this project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## This is a toy app for scraping and displaying data from amazon product listings
 
-In the project directory, you can run:
+## You can find a deployed version at
+http://jungle-scout-asin-scraper.s3-website-us-west-2.amazonaws.com/?fbclid=IwAR2QqLOdVRlkNWgW03Ds5zWvUBmWC3BT-b8AAxQhC7j5PIID2hCtIrF71N4
 
-### `npm start`
+## To run this app locally
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- npm install (this app was tested and developed on node 10.6.0, npm 6.1.0)
+- Follow the instructions in example.env to add your mysql credentials
+- Once connected to mysql, run `node node_modules/db-migrate/bin/db-migrate up` to create the required table
+- npm start to boot up the front end on localhost:3000 (webpack -dev server)
+- npm run start-api to boot up the api server on localhost:3030
+- npm run test-api to run integration tests
+- npm run build will give you a production build artifact on the front end in the folder /build (thanks create react app!)
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Some Technologies used
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- React, Webpack for the frontend
+- Express js api server
+- Cheerio for serverside DOM traversal
+- MySQL
+- Mocha / supertest
