@@ -1,10 +1,12 @@
 import express from 'express';
 import cors from 'cors';
+import morgan from 'morgan';
 import config from '../config/config';
 import handlers from './handlers/index';
 
 let app = express();
 
+app.use(morgan('combined'));
 app.use(cors());
 app.use(express.json());
 
