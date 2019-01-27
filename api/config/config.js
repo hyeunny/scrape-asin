@@ -1,3 +1,3 @@
 module.exports = {
-    port: 3030
+    port: process.env.NODE_ENV === 'test' ? 3333: 3030
 };

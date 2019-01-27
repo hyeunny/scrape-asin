@@ -21,3 +21,5 @@ app.get('/products', handlers.getProducts);
 app.listen(config.port,  function(req, res) {
     console.log(`API Server started on port: ${config.port}.`);
 });
+
+export default app;
